@@ -1,108 +1,77 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
-  <meta charset="utf-8">
-  <title>Hello World!</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" href="img/favicon.ico">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Fancy letterheaded paper</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <h1>HTML Rocks!</h1>
-  <p>
-    <button  onclick="helloWorld()">Prints Hello World to the Developer console</button>
-  </p>
-  <hr>
-  <form id="addForm">
-    <label for="num1">Number 1:</label>
-    <input type="number" id="num1" name="num1" required>
-    <br>
-    <label for="num2">Number 2:</label>
-    <input type="number" id="num2" name="num2" required>
-    <br>
-    <button type="submit">Add Numbers</button>
-  </form>
 
-  <label id="result">Result:</label>
+  <article class="letter">
+    <h1 class="logo">Awesome<br>Company</h1>
 
-  <hr>
+    <nav class="topnav" aria-label="secondary">
+      <a href="#">ENGRAVES</a>
+      <a href="#">DOORWAYS</a>
+      <a href="#">INK</a>
+      <a href="#">LAYERS</a>
+      <a href="#">SPANDRELS</a>
+      <a href="#">BINDINGS</a>
+    </nav>
 
-  <button id="jokeButton">Get a Random Joke</button>
-  <p id="joke"></p>
+    <header class="hero">
+      <h2>Lorem Ipsum</h2>
+      <p class="strap1">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…"</p>  
+      <p class="strap2">"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain…"</p>
+    </header>
 
-  <hr>
-  <button id="jokeButtonTable">Get a  5 Random Jokes</button>
-  <table id="jokeTable"></table>
+    <hr class="divider"> 
 
-  <script type="module" script="js/main.js">
-    import {helloWorld, add, fetchRandomJoke, fetch5RandomJokes} from './js/main.js';
+    <section class="content">
+      <div class="grid">
+        <div>
+          <h3>What is Lorem Ipsum?</h3>
+          <p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
-    // This shows how to assign a function to the window object
-    // so that it can be called from the browser console
-    window.helloWorld = helloWorld;
+          <h3>Where does it come from?</h3>
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.<br><br>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham</p>
+        </div>
 
-    // This shows how to add an event listener to a button in the HTML
-    // and call a function when the button is clicked
-    const form = document.getElementById('addForm');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const num1 = parseFloat(document.getElementById('num1').value);
-      const num2 = parseFloat(document.getElementById('num2').value);
-      try{
-        const result = add(num1, num2);
-        document.getElementById('result').textContent = `Result: ${result}`;
-      }catch(e){
-        console.error(e);
-        document.getElementById('result').textContent = `Error: ${e.message}`;
-      }
+        <div>
+          <h3>Why do we use it?</h3>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
 
-    });
+          <h3>Where can I get some?</h3>
+          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
 
-    // this shows how to add an event listener to a button in the HTML
-    // that calls a function that fetches a random joke from an API
-    // and displays it on the page
-    const jokebtn = document.getElementById('jokeButton');
-    const jokeresult = document.getElementById('joke');
-    jokebtn.addEventListener('click', async () => {
-      try {
-        jokeresult.textContent = 'Loading...';
-        const joke = await fetchRandomJoke();
-        document.getElementById('joke').textContent = joke;
-      } catch (e) {
-        console.error(e);
-        document.getElementById('joke').textContent = `Error: ${e.message}`;
-      }
-    });
+          <form class="ipsum-controls" id="ipsumForm">
+            <label><input type="radio" name="mode" value="paragraphs" checked> paragraphs</label>
+            <label><input type="radio" name="mode" value="words"> words</label>
+            <label><input type="radio" name="mode" value="bytes"> bytes</label>
+            <label><input type="radio" name="mode" value="lists"> lists</label>
+            <button type="button" id="sayChoice">Generate Lorem Ipsum</button>
+          </form>
+        </div>
+      </div>
+    </section>
 
-    // this shows how to add an event listener to a button in the HTML
-    // that calls a function that fetches 5 random jokes from an API
-    // and displays them in a table on the page
-    const jokeTableBtn = document.getElementById('jokeButtonTable');
-    const jokeTable = document.getElementById('jokeTable');
-    jokeTableBtn.addEventListener('click', async () => {
-      try {
-        jokeTable.textContent = 'Loading...';
-        const joke = await fetch5RandomJokes();
-        jokeTable.innerHTML = `
-              <thead>
-              <tr>
-                <th>Joke</th>
-              </tr>
-              </thead>
-              <tbody>
-              ${joke.map(j => `<tr><td>${j}</td></tr>`).join('')}
-              </tbody>
-            `;
-      } catch (e) {
-        console.error(e);
-        document.getElementById('joke').textContent = `Error: ${e.message}`;
-      }
+    <address>
+      <p>The Awesome Company</p>
+      <p>102-112 Frail Bend Bridge<br>
+      The Dwindlings<br>
+      Little Hornet<br>
+      HX3 9ZQ<br>
+      UK</p>
+    </address>
+  </article>
+
+  <!-- Minimal DOM script for the alert() requirement -->
+  <script>
+    document.getElementById('sayChoice').addEventListener('click', () => {
+      const selected = document.querySelector('input[name="mode"]:checked');
+      alert(`Selected option: ${selected ? selected.value : 'none'}`);
     });
   </script>
-
 </body>
-
 </html>
